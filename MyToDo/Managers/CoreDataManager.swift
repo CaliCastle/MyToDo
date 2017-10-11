@@ -96,7 +96,7 @@ final class CoreDataManager {
     
     /// Try Saving the Managed Object Context to the Persistent Store
     private func saveChanges() {
-        mainManagedObjectContext.performAndWait {
+        mainManagedObjectContext.perform {
             do {
                 if self.mainManagedObjectContext.hasChanges {
                     try self.mainManagedObjectContext.save()
@@ -107,18 +107,18 @@ final class CoreDataManager {
                 print("Unable to Save Changes of Main Managed Object Context")
                 print("\(saveError), \(saveError.localizedDescription)")
             }
-        }
-        
-        self.privateManagedObjectContext.perform {
-            do {
-                if self.privateManagedObjectContext.hasChanges {
-                    try self.privateManagedObjectContext.save()
+            
+            self.privateManagedObjectContext.perform {
+                do {
+                    if self.privateManagedObjectContext.hasChanges {
+                        try self.privateManagedObjectContext.save()
+                    }
+                } catch {
+                    let saveError = error as NSError
+                    
+                    print("Unable to Save Changes of Private Managed Object Context")
+                    print("\(saveError), \(saveError.localizedDescription)")
                 }
-            } catch {
-                let saveError = error as NSError
-                
-                print("Unable to Save Changes of Private Managed Object Context")
-                print("\(saveError), \(saveError.localizedDescription)")
             }
         }
     }

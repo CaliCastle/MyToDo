@@ -9,6 +9,15 @@
 import UIKit
 import CoreData
 
+// MARK: - Note View Controller Delegate
+protocol CCNoteViewControllerDelegate {
+    
+    func deleteNote(note: Note)
+    
+    func addNewNote()
+    
+}
+
 class CCNoteViewController: UIViewController {
 
     // MARK: - Properties
@@ -29,6 +38,9 @@ class CCNoteViewController: UIViewController {
     // MARK: -
     
     var note: Note?
+    
+    // MARK: - Delegate
+    var delegate: CCNoteViewControllerDelegate?
     
     var activeField: UIView? {
         willSet {
@@ -188,6 +200,24 @@ class CCNoteViewController: UIViewController {
     
     @IBAction func done(_ sender: UIBarButtonItem) {
         activeField = nil
+    }
+    
+    @IBAction func createNewNote(_ sender: UIBarButtonItem) {
+        let _ = navigationController?.popViewController(animated: true)
+        
+        delegate?.addNewNote()
+    }
+    
+    @IBAction func deleteNote(_ sender: UIBarButtonItem) {
+        let alertController = UIAlertController(title: "Careful", message: "Are you sure that you want to delete this note?", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { _ in
+            let _ = self.navigationController?.popViewController(animated: true)
+            
+            self.delegate?.deleteNote(note: self.note!)
+        }))
+        
+        present(alertController, animated: true, completion: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

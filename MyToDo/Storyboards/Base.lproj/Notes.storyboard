@@ -237,13 +237,20 @@
                                     <outletCollection property="gestureRecognizers" destination="7wA-EY-PXn" appends="YES" id="qps-1K-Vex"/>
                                 </connections>
                             </label>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uAS-I0-cgP">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uAS-I0-cgP">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem systemItem="compose" id="gwU-s1-31H"/>
+                                    <barButtonItem systemItem="add" id="gwU-s1-31H">
+                                        <connections>
+                                            <action selector="createNewNote:" destination="ILO-3y-EbG" id="RSY-6p-CqO"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="jdP-wN-heM"/>
-                                    <barButtonItem systemItem="trash" id="xut-YL-FFo"/>
+                                    <barButtonItem systemItem="trash" id="xut-YL-FFo">
+                                        <connections>
+                                            <action selector="deleteNote:" destination="ILO-3y-EbG" id="9Ki-Gh-KbT"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
@@ -261,12 +268,15 @@
                             <constraint firstItem="fhy-oa-HN1" firstAttribute="top" secondItem="ASD-Y3-QM2" secondAttribute="bottom" constant="8" id="JB1-Fi-tQL"/>
                             <constraint firstItem="bEc-T1-5s3" firstAttribute="leading" secondItem="Lae-Qg-xTh" secondAttribute="leading" constant="20" id="KHy-b3-L91"/>
                             <constraint firstItem="Lae-Qg-xTh" firstAttribute="trailing" secondItem="bEc-T1-5s3" secondAttribute="trailing" constant="20" id="KYA-bC-Esk"/>
+                            <constraint firstItem="uAS-I0-cgP" firstAttribute="trailing" secondItem="Lae-Qg-xTh" secondAttribute="trailing" id="L9A-yl-AQl"/>
                             <constraint firstItem="Lae-Qg-xTh" firstAttribute="trailing" secondItem="ASD-Y3-QM2" secondAttribute="trailing" constant="20" id="Xch-N1-cjm"/>
                             <constraint firstItem="eeN-uu-sD6" firstAttribute="leading" secondItem="Lae-Qg-xTh" secondAttribute="leading" constant="20" id="aik-MK-DA9"/>
                             <constraint firstItem="Lae-Qg-xTh" firstAttribute="trailing" secondItem="fhy-oa-HN1" secondAttribute="trailing" constant="20" id="b9Y-FD-2En"/>
                             <constraint firstItem="Lae-Qg-xTh" firstAttribute="trailing" secondItem="eeN-uu-sD6" secondAttribute="trailing" constant="20" id="czM-lS-pcz"/>
+                            <constraint firstItem="uAS-I0-cgP" firstAttribute="leading" secondItem="Lae-Qg-xTh" secondAttribute="leading" id="dZ8-my-oa3"/>
                             <constraint firstItem="axD-6W-Qv0" firstAttribute="leading" secondItem="Lae-Qg-xTh" secondAttribute="leading" constant="16" id="h99-aX-Qlh"/>
                             <constraint firstItem="eeN-uu-sD6" firstAttribute="top" secondItem="bEc-T1-5s3" secondAttribute="bottom" constant="8" id="k3s-ca-ecW"/>
+                            <constraint firstItem="uAS-I0-cgP" firstAttribute="bottom" secondItem="Lae-Qg-xTh" secondAttribute="bottom" id="moH-ki-Fxn"/>
                             <constraint firstItem="bEc-T1-5s3" firstAttribute="top" secondItem="Lae-Qg-xTh" secondAttribute="top" constant="30" id="wuh-83-XFO"/>
                             <constraint firstItem="ASD-Y3-QM2" firstAttribute="leading" secondItem="Lae-Qg-xTh" secondAttribute="leading" constant="20" id="xoW-7N-wYu"/>
                         </constraints>
